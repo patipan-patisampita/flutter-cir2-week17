@@ -35,16 +35,33 @@ class _CounterPageState extends State<CounterPage> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: (Colors.redAccent),
-        onPressed: () {
-          setState(() {
-            _count ++;
-            debugPrint("count: $_count");
-          });
-        },
-        child: Icon(Icons.add),
-        tooltip: "Add ",
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            backgroundColor: (Colors.redAccent),
+            onPressed: () {
+              setState(() {
+                _count ++;
+                debugPrint("count: $_count");
+              });
+            },
+            child: Icon(Icons.add),
+            tooltip: "Add ",
+          ),
+
+          FloatingActionButton(
+            backgroundColor: (Colors.redAccent),
+            onPressed: () {
+              setState(() {
+                _count --;
+                debugPrint("count: $_count");
+              });
+            },
+            child: Icon(Icons.delete_outline),
+            tooltip: "Delete ",
+          ),
+        ],
       ),
     );
   }
