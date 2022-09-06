@@ -15,6 +15,15 @@ class _CounterPageState extends State<CounterPage> {
       appBar: AppBar(
         title: const Text("Fluter Counter"),
         backgroundColor: Colors.redAccent,
+        actions: [
+          IconButton(onPressed: () {
+            setState(() {
+              _count = 0;
+              debugPrint("count: $_count");
+            });
+          }, icon: const Icon(Icons.delete)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.wifi))
+        ],
       ),
       body: Center(
         child: Text(
