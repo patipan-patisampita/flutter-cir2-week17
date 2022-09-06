@@ -8,7 +8,7 @@ class CounterPage extends StatefulWidget {
 }
 
 class _CounterPageState extends State<CounterPage> {
-  final int _count = 0;
+  late int _count = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +28,12 @@ class _CounterPageState extends State<CounterPage> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: (Colors.redAccent),
-        onPressed: () => debugPrint("count: "),
+        onPressed: () {
+          setState(() {
+            _count ++;
+            debugPrint("count: $_count");
+          });
+        },
         child: Icon(Icons.add),
         tooltip: "Add ",
       ),
