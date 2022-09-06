@@ -8,6 +8,7 @@ class CounterPage extends StatefulWidget {
 }
 
 class _CounterPageState extends State<CounterPage> {
+  final int _count = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,16 +16,21 @@ class _CounterPageState extends State<CounterPage> {
         title: const Text("Fluter Counter"),
         backgroundColor: Colors.redAccent,
       ),
-      body:const Center(
-        child: Text("Counter: 5 "),
+      body: Center(
+        child: Text(
+          "Counter: $_count ",
+          style: const TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: Colors.redAccent
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: (Colors.redAccent),
-        onPressed: () {},
-        child: Icon(
-          Icons.add,
-        ),
-        tooltip: "Add",
+        onPressed: () => debugPrint("count: "),
+        child: Icon(Icons.add),
+        tooltip: "Add ",
       ),
     );
   }
