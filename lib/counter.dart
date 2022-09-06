@@ -58,7 +58,7 @@ class _CounterPageState extends State<CounterPage> {
                 debugPrint("count: $_count");
               });
             },
-            child: Icon(Icons.delete_outline),
+            child: Icon(Icons.remove),
             tooltip: "Delete ",
           ),
         ],

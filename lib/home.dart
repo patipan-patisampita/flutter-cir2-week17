@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'contact.dart';
+import 'counter.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -35,6 +36,13 @@ class HomePage extends StatelessWidget {
               title: const Text("Contact"),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const ContactPage()));
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.developer_board,color: Colors.orangeAccent),
+              title: const Text("Counter"),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const CounterPage()));
               },
             ),
           ],
