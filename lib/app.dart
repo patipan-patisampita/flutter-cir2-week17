@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'counter.dart';
 import 'home.dart';
 
 class MyApp extends StatelessWidget {
@@ -8,7 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: CounterPage(),
     );
   }
 }
