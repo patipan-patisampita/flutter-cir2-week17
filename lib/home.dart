@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'contact.dart';
+import 'profile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -69,6 +70,17 @@ class _HomePageState extends State<HomePage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const ContactPage()));
+              },
+            ),
+            ListTile(
+              leading:
+                  const Icon(Icons.person, color: Colors.orangeAccent),
+              title: const Text("ประวัตส่วนตัว"),
+              onTap: () async {
+                await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ProfilePage()));
               },
             ),
           ],
