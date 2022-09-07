@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
             ),
              ListTile(
               leading: Icon(Icons.api),
-              title: Text('Contact'),
+              title: Text('ประวัติส่วนตัว'),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
               },
