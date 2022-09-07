@@ -30,8 +30,8 @@ class _CounterPageState extends State<CounterPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Counter",
-              style: Theme.of(context).textTheme.displayLarge,
+              "Liver Pool",
+              style: Theme.of(context).textTheme.displayMedium,
             ),
             const Divider(height: 20,color: Colors.redAccent),
             Text(
@@ -41,7 +41,16 @@ class _CounterPageState extends State<CounterPage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.redAccent,
+        child: const Icon(Icons.add),
+        onPressed: () {
+          setState(() {
+            _count ++;
+            debugPrint("count:$_count");
+          });
+        },
+      ),
     );
   }
 }
