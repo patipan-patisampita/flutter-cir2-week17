@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
 
 import 'contact.dart';
-import 'counter.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _count = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Flutter App"),
       ),
-      body: const Center(
-        child: Text("สวัสดีชาว Fluter3.3"),
+      body: Center(
+        child: Text(
+          "$_count",
+          style: Theme.of(context).textTheme.displayMedium,
+        ),
       ),
       drawer: Drawer(
         child: ListView(
@@ -25,24 +34,22 @@ class HomePage extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: const Icon(Icons.home,color: Colors.orangeAccent),
+              leading: const Icon(Icons.home, color: Colors.orangeAccent),
               title: const Text("Home"),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
+              onTap: () async {
+                await Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const HomePage()));
               },
             ),
             ListTile(
-              leading: const Icon(Icons.contact_phone,color: Colors.orangeAccent),
+              leading:
+                  const Icon(Icons.contact_phone, color: Colors.orangeAccent),
               title: const Text("Contact"),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const ContactPage()));
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.developer_board,color: Colors.orangeAccent),
-              title: const Text("Counter"),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const CounterPage()));
+              onTap: () async {
+                await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ContactPage()));
               },
             ),
           ],
@@ -50,7 +57,10 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          debugPrint("Hello");
+          setState(() {
+            _count++;
+            debugPrint("count:$_count");
+          });
         },
         child: const Icon(Icons.add),
       ),
