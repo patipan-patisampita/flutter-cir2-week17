@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'contact.dart';
+import 'gridview_card_page.dart';
+import 'list_view_menu.dart';
 import 'profile.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,103 +12,67 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _count = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
-        title: const Text("Flutter App"),
+      appBar: AppBar(
+        title: Text("Home page"),
         actions: [
           IconButton(
-              onPressed: () {
-                setState(() {
-                  _count = 0;
-                });
-              },
-              icon: const Icon(Icons.delete))
+            onPressed: () {
+              debugPrint("OK");
+            },
+            icon: Icon(Icons.delete),
+          ),
+          IconButton(
+            onPressed: () {
+              debugPrint("OK");
+            },
+            icon: Icon(Icons.search),
+          ),
         ],
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Liver Pool",
-              style: Theme.of(context).textTheme.displayMedium,
-            ),
-            const Divider(height: 20,color: Colors.redAccent),
-            Text(
-              "$_count",
-              style: Theme.of(context).textTheme.displayLarge,
-            ),
-          ],
-        ),
       ),
       drawer: Drawer(
         child: ListView(
           children: [
-            const UserAccountsDrawerHeader(
-              accountName: Text("Mark Zuckerberg"),
+            UserAccountsDrawerHeader(
+              accountName: Text("Mark"),
               accountEmail: Text("mark@gmail.com"),
               currentAccountPicture: CircleAvatar(
                 child: Icon(Icons.android),
               ),
             ),
             ListTile(
-              leading: const Icon(Icons.home, color: Colors.orangeAccent),
-              title: const Text("Home"),
-              onTap: () async {
-                await Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const HomePage()));
+              leading: Icon(Icons.home),
+              title: Text('Home'),
+              onTap: () {
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
               },
             ),
             ListTile(
-              leading:
-                  const Icon(Icons.contact_phone, color: Colors.orangeAccent),
-              title: const Text("Contact"),
-              onTap: () async {
-                await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ContactPage()));
+              leading: Icon(Icons.apps),
+              title: Text('Grid View'),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => GridViewCardPage()));
               },
             ),
             ListTile(
-              leading:
-                  const Icon(Icons.person, color: Colors.orangeAccent),
-              title: const Text("ประวัตส่วนตัว"),
-              onTap: () async {
-                await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ProfilePage()));
+              leading: Icon(Icons.api),
+              title: Text('List View'),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ListViewMenuPage()));
               },
             ),
+             ListTile(
+              leading: Icon(Icons.api),
+              title: Text('Contact'),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+              },
+            ),
+           
           ],
         ),
-      ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            child: const Icon(Icons.add),
-            onPressed: () {
-              setState(() {
-                _count ++;
-                debugPrint("count:$_count");
-              });
-            },
-          ),
-          FloatingActionButton(
-            child: const Icon(Icons.remove),
-            onPressed: () {
-              setState(() {
-                _count --;
-                debugPrint("count:$_count");
-              });
-            },
-          ),
-        ],
       ),
     );
   }
