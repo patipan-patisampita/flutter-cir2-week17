@@ -1,68 +1,47 @@
 import 'package:flutter/material.dart';
 
 class CounterPage extends StatefulWidget {
-  const CounterPage({Key? key}) : super(key: key);
+  const CounterPage({super.key});
 
   @override
   State<CounterPage> createState() => _CounterPageState();
 }
 
 class _CounterPageState extends State<CounterPage> {
-  late int _count = 0;
+  late int _count = 10;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Fluter Counter"),
+        title: const Text("Flutter Counter"),
         backgroundColor: Colors.redAccent,
         actions: [
-          IconButton(onPressed: () {
-            setState(() {
-              _count = 0;
-              debugPrint("count: $_count");
-            });
-          }, icon: const Icon(Icons.delete)),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.wifi))
+          IconButton(
+              onPressed: () {
+                setState(() {
+                  _count = 0;
+                });
+              },
+              icon: const Icon(Icons.delete))
         ],
       ),
       body: Center(
-        child: Text(
-          "Counter: $_count ",
-          style: const TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-            color: Colors.redAccent
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Counter",
+              style: Theme.of(context).textTheme.displayLarge,
+            ),
+            const Divider(height: 20,color: Colors.redAccent),
+            Text(
+              "$_count",
+              style: Theme.of(context).textTheme.displayLarge,
+            ),
+          ],
         ),
       ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            backgroundColor: (Colors.redAccent),
-            onPressed: () {
-              setState(() {
-                _count ++;
-                debugPrint("count: $_count");
-              });
-            },
-            child: Icon(Icons.add),
-            tooltip: "Add ",
-          ),
-
-          FloatingActionButton(
-            backgroundColor: (Colors.redAccent),
-            onPressed: () {
-              setState(() {
-                _count --;
-                debugPrint("count: $_count");
-              });
-            },
-            child: Icon(Icons.remove),
-            tooltip: "Delete ",
-          ),
-        ],
-      ),
+      floatingActionButton: FloatingActionButton(),
     );
   }
 }
