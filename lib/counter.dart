@@ -41,15 +41,30 @@ class _CounterPageState extends State<CounterPage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.redAccent,
-        child: const Icon(Icons.add),
-        onPressed: () {
-          setState(() {
-            _count ++;
-            debugPrint("count:$_count");
-          });
-        },
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            backgroundColor: Colors.redAccent,
+            child: const Icon(Icons.add),
+            onPressed: () {
+              setState(() {
+                _count ++;
+                debugPrint("count:$_count");
+              });
+            },
+          ),
+          FloatingActionButton(
+            backgroundColor: Colors.redAccent,
+            child: const Icon(Icons.remove),
+            onPressed: () {
+              setState(() {
+                _count --;
+                debugPrint("count:$_count");
+              });
+            },
+          ),
+        ],
       ),
     );
   }
