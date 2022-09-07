@@ -14,13 +14,32 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+       appBar: AppBar(
         title: const Text("Flutter App"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                setState(() {
+                  _count = 0;
+                });
+              },
+              icon: const Icon(Icons.delete))
+        ],
       ),
       body: Center(
-        child: Text(
-          "$_count",
-          style: Theme.of(context).textTheme.displayMedium,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Liver Pool",
+              style: Theme.of(context).textTheme.displayMedium,
+            ),
+            const Divider(height: 20,color: Colors.redAccent),
+            Text(
+              "$_count",
+              style: Theme.of(context).textTheme.displayLarge,
+            ),
+          ],
         ),
       ),
       drawer: Drawer(
@@ -55,14 +74,28 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _count++;
-            debugPrint("count:$_count");
-          });
-        },
-        child: const Icon(Icons.add),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            child: const Icon(Icons.add),
+            onPressed: () {
+              setState(() {
+                _count ++;
+                debugPrint("count:$_count");
+              });
+            },
+          ),
+          FloatingActionButton(
+            child: const Icon(Icons.remove),
+            onPressed: () {
+              setState(() {
+                _count --;
+                debugPrint("count:$_count");
+              });
+            },
+          ),
+        ],
       ),
     );
   }
